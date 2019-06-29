@@ -1,5 +1,6 @@
 package com.xhs.center.test;
 
+import com.xhs.center.common.rabbitMq.fanout_Exchange.FanoutSender;
 import com.xhs.center.common.rabbitMq.many_many.Many_ManySender1;
 import com.xhs.center.common.rabbitMq.many_many.Many_ManySender2;
 import com.xhs.center.common.rabbitMq.object.ObjectSender;
@@ -39,6 +40,8 @@ public class RabbitMqHelloTest {
     private ObjectSender objectSender;
     @Autowired
     private TopicSender topicSender;
+    @Autowired
+    private FanoutSender fanoutSender;
 
     @Test
     public void one_one() throws Exception {
@@ -72,6 +75,12 @@ public class RabbitMqHelloTest {
     public void topic() throws Exception {
         // topicSender.send1();   // 两个队列都能收到
         topicSender.send2();   //  只用 2 能收到
+    }
+
+    @Test
+    public void fanout() throws Exception {
+
+       fanoutSender.send();
     }
 
 }
