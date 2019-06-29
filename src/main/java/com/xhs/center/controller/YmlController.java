@@ -58,6 +58,7 @@ public class YmlController {
 
     @GetMapping("/a1")
     public String ge() {
+
         String address = read_yml.getAddress();
         ZSetOperations zSetOperations = redisTemplate.opsForZSet();
         HashOperations hashOperations = redisTemplate.opsForHash();
